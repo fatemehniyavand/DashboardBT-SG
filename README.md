@@ -13,6 +13,14 @@ python -m streamlit run streamlit_app.py
 
 The first launch verifies and extracts `research_data.zip`. It contains the existing synthetic research outputs for seeds **42, 123, 2026**: 1,000 recorded executions per seed and six archived placement scenarios. No database connection is needed.
 
+## Ocean Edition · V2
+
+The second visual edition uses the supplied cyan/violet logo reference, a scalable vector logo, sea-wave motion and a separate launch file. In Streamlit Community Cloud choose **`streamlit_app_v2.py`** on the **`main`** branch. The original **`streamlit_app.py`** keeps the V1 appearance. See [Ocean Edition documentation](ticktide_observatory/README_OCEAN.md).
+
+```bash
+python -m streamlit run streamlit_app_v2.py
+```
+
 ## Explore
 
 1. Choose a placement scenario above the dashboard.
