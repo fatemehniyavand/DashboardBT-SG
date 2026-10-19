@@ -12,7 +12,8 @@ VIOLET='#BB80F5'
 PALETTE=[CYAN,VIOLET,'#8488EF','#8AE1FF','#D6ABFF','#FF93BE']
 
 def logo_svg():
-    return (ASSETS/'tick_wave_logo.svg').read_text()
+    name='tick_wave_logo_animated.svg' if st.session_state.get('_tick_wave_surge') else 'tick_wave_logo.svg'
+    return (ASSETS/name).read_text()
 
 def logo_uri():
     return 'data:image/svg+xml;base64,'+base64.b64encode(logo_svg().encode()).decode()
@@ -46,14 +47,27 @@ def ocean_markup(markup,mode='wall'):
         }.items():
             markup=markup.replace(old,new)
     css=(Path(__file__).with_name('ocean_wall.css')).read_text()
-    return markup.replace('</head>',f'<style>{css}</style></head>')
+    markup=markup.replace('</head>',f'<style>{css}</style></head>')
+    if st.session_state.get('_tick_wave_surge'):
+        surge_css=Path(__file__).with_name('surge_wall.css').read_text()
+        markup=markup.replace('</head>',f'<style>{surge_css}</style></head>')
+        if mode=='wall':
+            js=Path(__file__).with_name('surge_wall.js').read_text()
+            markup=markup.replace('</body>',f'<script>{js}</script></body>')
+    return markup
 
 def apply_ocean_shell():
     css=(Path(__file__).with_name('ocean_shell.css')).read_text()
     st.markdown(f'<style>{css}</style>',unsafe_allow_html=True)
+    if st.session_state.get('_tick_wave_surge'):
+        st.markdown('<style>'+Path(__file__).with_name('surge_shell.css').read_text()+'</style>',unsafe_allow_html=True)
 
 def ocean_sidebar():
     st.markdown(f'<div class="ocean-side-logo"><img src="{logo_uri()}" alt="tick wave logo"><div>tick <span>wave</span></div><small>OCEAN EDITION / 02</small></div>',unsafe_allow_html=True)
 
 def ocean_header():
+    if st.session_state.get('_tick_wave_surge'):
+        sea='data:image/svg+xml;base64,'+base64.b64encode((ASSETS/'ocean_swell.svg').read_bytes()).decode()
+        st.markdown(f'''<section class="ocean-hero surge-hero"><div class="ocean-copy"><div class="ocean-kicker">TICK WAVE / THE LIVING OCEAN · SURF EDITION</div><h1>Make a ripple.<br>Move an ocean.</h1><p>A request becomes a current. Watch its energy flow through every decision, service and deployment.</p><span class="ocean-tag">CYAN CURRENTS</span><span class="ocean-tag violet">VIOLET TIDES</span></div><div class="ocean-logo-stage"><img src="{logo_uri()}" alt="Animated tick wave logo — pulsing nodes and flowing branches"><span>ONE SIGNAL. AN OCEAN OF POSSIBILITIES.</span></div><div class="surge-ocean" aria-hidden="true"><img src="{sea}" alt=""><img src="{sea}" alt=""><img src="{sea}" alt=""></div><div class="surge-water-label">RIPPLE → CURRENT → TIDE → HARBOR</div></section>''',unsafe_allow_html=True)
+        return
     st.markdown(f'''<section class="ocean-hero"><div class="ocean-copy"><div class="ocean-kicker">TICK WAVE / OCEAN EDITION</div><h1>Every decision<br>starts a new wave.</h1><p>One request is a ripple. Follow its current through behavior, services and the edge–cloud ocean.</p><span class="ocean-tag">RESEARCH IN MOTION</span><span class="ocean-tag violet">SIX CONNECTED CURRENTS</span></div><div class="ocean-logo-stage"><img src="{logo_uri()}" alt="tick wave logo supplied as reference"><span>FROM A SINGLE SIGNAL TO A CONNECTED SYSTEM</span></div><div class="ocean-surface"><i></i><i></i><i></i></div></section>''',unsafe_allow_html=True)

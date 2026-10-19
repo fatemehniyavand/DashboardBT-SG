@@ -27,3 +27,11 @@ python bootstrap_data.py   # only needed in a fresh clone
 python ticktide_observatory/test_wall.py
 python ticktide_observatory/test_ocean.py
 ```
+
+## Living Ocean / Surf Edition
+
+For the approved high-motion edition select **`streamlit_app_ocean.py`** as the Streamlit main file on branch `main`. This preserves the V1 and initial V2 launchers. It adds a pulsing, flowing logo, buoy-like logo movement, multi-layer rolling sea waves in the header and every card, foam particles and light trails along actual active paths. **Visual sea** offers Calm, Swell and Surf; it affects presentation amplitude only. Panel water follows the shared playback clock and pauses with it; reduced-motion settings freeze decorative water.
+
+```bash
+python -m streamlit run streamlit_app_ocean.py
+```

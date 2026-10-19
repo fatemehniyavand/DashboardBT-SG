@@ -18,6 +18,7 @@ sys.path.insert(0, str(ROOT))
 OCEAN_EDITION=globals().get('TICK_WAVE_EDITION')=='ocean'
 st.set_page_config(page_title='tick wave · Ocean Edition' if OCEAN_EDITION else 'tick wave · Research in Motion', page_icon='🌊' if OCEAN_EDITION else '∿', layout='wide')
 st.session_state['_tick_wave_edition']='ocean' if OCEAN_EDITION else 'classic'
+st.session_state['_tick_wave_surge']=bool(globals().get('TICK_WAVE_SURGE',False))
 STAGES = ['Behavior tree', 'Execution trace', 'Executed trees', 'Prolog → service graph', 'Resource model', 'Physical network', 'MILP placement', 'Routing & audit', 'Experiment atlas', 'Kafka & provenance']
 COLORS = ['#60e7c6', '#77a9ff', '#bd9cff', '#ffbc76', '#ff7e9f', '#96d7ff']
 st.markdown('''<style>
