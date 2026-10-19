@@ -1,0 +1,424 @@
+{
+  "cloudnet_graph": {
+    "id": "cloudnet_small_scale",
+    "description": "",
+    "nodes": [
+      {
+        "id": "core",
+        "description": "Data Center",
+        "label": "CORE_1",
+        "type": "core",
+        "capabilities": [
+          {
+            "id": "core:cluster",
+            "label": "CORE_CLUSTER1",
+            "type": "computation",
+            "category": "VM",
+            "resources": [
+              {
+                "type": "cpu",
+                "capacity": {
+                  "value": 1,
+                  "unit": "vcpu"
+                },
+                "cost": {
+                  "value": 1,
+                  "unit": "EUR/h/vcpu"
+                }
+              },
+              {
+                "type": "memory",
+                "capacity": {
+                  "value": 1,
+                  "unit": "MB"
+                },
+                "cost": {
+                  "value": 1,
+                  "unit": "EUR/h/MB"
+                }
+              }
+            ],
+            "max_blocks": 10000,
+            "cost_per_block": {
+              "value": 5,
+              "unit": "EUR/h"
+            },
+            "resource_allocation": 0
+          }
+        ]
+      },
+      {
+        "id": "edge1",
+        "description": "EDGE1 Data Center",
+        "label": "EDGE_1",
+        "type": "edge",
+        "capabilities": [
+          {
+            "id": "edge1:cluster",
+            "label": "EDGE1_CLUSTER",
+            "type": "computation",
+            "category": "VM",
+            "resources": [
+              {
+                "type": "cpu",
+                "capacity": {
+                  "value": 1,
+                  "unit": "vcpu"
+                },
+                "cost": {
+                  "value": 1,
+                  "unit": "EUR/h/vcpu"
+                }
+              },
+              {
+                "type": "memory",
+                "capacity": {
+                  "value": 1,
+                  "unit": "MB"
+                },
+                "cost": {
+                  "value": 1,
+                  "unit": "EUR/h/MB"
+                }
+              }
+            ],
+            "max_blocks": 10000,
+            "cost_per_block": {
+              "value": 10,
+              "unit": "EUR/h"
+            },
+            "resource_allocation": 0
+          }
+        ]
+      },
+      {
+        "id": "edge2",
+        "description": "EDGE2 Data Center",
+        "label": "EDGE_2",
+        "type": "edge",
+        "capabilities": [
+          {
+            "id": "edge2:cluster",
+            "label": "EDGE2_CLUSTER",
+            "type": "computation",
+            "category": "VM",
+            "resources": [
+              {
+                "type": "cpu",
+                "capacity": {
+                  "value": 1,
+                  "unit": "vcpu"
+                },
+                "cost": {
+                  "value": 1,
+                  "unit": "EUR/h/vcpu"
+                }
+              },
+              {
+                "type": "memory",
+                "capacity": {
+                  "value": 1,
+                  "unit": "MB"
+                },
+                "cost": {
+                  "value": 1,
+                  "unit": "EUR/h/MB"
+                }
+              }
+            ],
+            "max_blocks": 10000,
+            "cost_per_block": {
+              "value": 10,
+              "unit": "EUR/h"
+            },
+            "resource_allocation": 0
+          }
+        ]
+      },
+      {
+        "id": "access1",
+        "description": "Base station",
+        "label": "ACCESS_1",
+        "type": "access",
+        "capabilities": [
+          {
+            "id": "access1:ingress",
+            "label": "ACCESS1_INGRESS",
+            "type": "production",
+            "category": "VM",
+            "resources": [
+              {
+                "type": "bandwidth",
+                "capacity": {
+                  "value": 1,
+                  "unit": "Mbps"
+                },
+                "cost": {
+                  "value": 0,
+                  "unit": "EUR/MB"
+                }
+              }
+            ],
+            "max_blocks": 10000,
+            "cost_per_block": {
+              "value": 0,
+              "unit": "EUR/h"
+            },
+            "resource_allocation": 0
+          },
+          {
+            "id": "access1:egress",
+            "label": "ACCESS1_EGRESS",
+            "type": "consumption",
+            "category": "VM",
+            "resources": [
+              {
+                "type": "bandwidth",
+                "capacity": {
+                  "value": 1,
+                  "unit": "Mbps"
+                },
+                "cost": {
+                  "value": 0,
+                  "unit": "EUR/MB"
+                }
+              }
+            ],
+            "max_blocks": 10000,
+            "cost_per_block": {
+              "value": 0,
+              "unit": "EUR/h"
+            },
+            "resource_allocation": 0
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "origin": "core",
+        "target": "edge1",
+        "type": "wireline",
+        "resources": [
+          {
+            "type": "bandwidth",
+            "capacity": {
+              "value": 1,
+              "unit": "Mbps"
+            },
+            "cost": {
+              "value": 2,
+              "unit": "EUR/MB"
+            }
+          }
+        ],
+        "max_blocks": 10000,
+        "cost_per_block": {
+              "value": 2,
+              "unit": "EUR/h"
+            },
+        "propagation_delay": {
+          "value": 0,
+          "unit": "ms"
+        },
+        "resource_allocation": 0
+      },
+      {
+        "origin": "edge1",
+        "target": "core",
+        "type": "wireline",
+        "resources": [
+          {
+            "type": "bandwidth",
+            "capacity": {
+              "value": 1,
+              "unit": "Mbps"
+            },
+            "cost": {
+              "value": 2,
+              "unit": "EUR/MB"
+            }
+          }
+        ],
+        "max_blocks": 10000,
+        "cost_per_block": {
+          "value": 2,
+          "unit": "EUR/h"
+        },
+        "propagation_delay": {
+          "value": 0,
+          "unit": "ms"
+        },
+        "resource_allocation": 0
+      },
+      {
+        "origin": "core",
+        "target": "edge2",
+        "type": "wireline",
+        "resources": [
+          {
+            "type": "bandwidth",
+            "capacity": {
+              "value": 1,
+              "unit": "Mbps"
+            },
+            "cost": {
+              "value": 2,
+              "unit": "EUR/MB"
+            }
+          }
+        ],
+        "max_blocks": 10000,
+        "cost_per_block": {
+              "value": 2,
+              "unit": "EUR/h"
+            },
+        "propagation_delay": {
+          "value": 0,
+          "unit": "ms"
+        },
+        "resource_allocation": 0
+      },
+      {
+        "origin": "edge2",
+        "target": "core",
+        "type": "wireline",
+        "resources": [
+          {
+            "type": "bandwidth",
+            "capacity": {
+              "value": 1,
+              "unit": "Mbps"
+            },
+            "cost": {
+              "value": 2,
+              "unit": "EUR/MB"
+            }
+          }
+        ],
+        "max_blocks": 10000,
+        "cost_per_block": {
+          "value": 2,
+          "unit": "EUR/h"
+        },
+        "propagation_delay": {
+          "value": 0,
+          "unit": "ms"
+        },
+        "resource_allocation": 0
+      },
+      {
+        "origin": "edge1",
+        "target": "access1",
+        "type": "wireline",
+        "resources": [
+          {
+            "type": "bandwidth",
+            "capacity": {
+              "value": 1,
+              "unit": "Mbps"
+            },
+            "cost": {
+              "value": 1,
+              "unit": "EUR/MB"
+            }
+          }
+        ],
+        "max_blocks": 10000,
+        "cost_per_block": {
+              "value": 1,
+              "unit": "EUR/h"
+            },
+        "propagation_delay": {
+          "value": 0,
+          "unit": "ms"
+        },
+        "resource_allocation": 0
+      },
+      {
+        "origin": "access1",
+        "target": "edge1",
+        "type": "wireline",
+        "resources": [
+          {
+            "type": "bandwidth",
+            "capacity": {
+              "value": 1,
+              "unit": "Mbps"
+            },
+            "cost": {
+              "value": 1,
+              "unit": "EUR/MB"
+            }
+          }
+        ],
+        "max_blocks": 10000,
+        "cost_per_block": {
+              "value": 1,
+              "unit": "EUR/h"
+            },
+        "propagation_delay": {
+          "value": 0,
+          "unit": "ms"
+        },
+        "resource_allocation": 0
+      },
+      {
+        "origin": "edge2",
+        "target": "access1",
+        "type": "wireline",
+        "resources": [
+          {
+            "type": "bandwidth",
+            "capacity": {
+              "value": 1,
+              "unit": "Mbps"
+            },
+            "cost": {
+              "value": 1,
+              "unit": "EUR/MB"
+            }
+          }
+        ],
+        "max_blocks": 10000,
+        "cost_per_block": {
+              "value": 1,
+              "unit": "EUR/h"
+            },
+        "propagation_delay": {
+          "value": 0,
+          "unit": "ms"
+        },
+        "resource_allocation": 0
+      },
+      {
+        "origin": "access1",
+        "target": "edge2",
+        "type": "wireline",
+        "resources": [
+          {
+            "type": "bandwidth",
+            "capacity": {
+              "value": 1,
+              "unit": "Mbps"
+            },
+            "cost": {
+              "value": 1,
+              "unit": "EUR/MB"
+            }
+          }
+        ],
+        "max_blocks": 10000,
+        "cost_per_block": {
+              "value": 1,
+              "unit": "EUR/h"
+            },
+        "propagation_delay": {
+          "value": 0,
+          "unit": "ms"
+        },
+        "resource_allocation": 0
+      }
+    ]
+  }
+}
