@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "description": "Explicit synthetic load/calibration assumptions, NOT physical measurements.",
+  "planning_window_seconds": 60,
+  "request_arrival_rate_rps": 0.2,
+  "reference_execution_duration_seconds": 1.0,
+  "reference_cpu_capacity_ops_per_second_per_vcpu": 50000,
+  "cpu_headroom_factor": 1.25,
+  "minimum_cpu_vcpu": 0.1,
+  "memory_MB_by_class": {
+    "Light": 128,
+    "Light-Medium": 192,
+    "Medium": 256,
+    "Heavy": 512
+  },
+  "memory_headroom_factor": 1.0,
+  "message_size_kB_by_data_key": {
+    "request": 4,
+    "context": 16,
+    "plan_a": 8,
+    "raw_a": 128,
+    "plan_b": 8,
+    "raw_b": 192,
+    "result": 32,
+    "recovery_plan": 12,
+    "consolidated_result": 40,
+    "output": 40
+  },
+  "default_message_size_kB": 16,
+  "traffic_multiplier": 1.0,
+  "data_edge_policy": "explicit_data_key",
+  "solver_time_limit_seconds": 90,
+  "solver_relative_gap": 1e-06,
+  "original_network_block_policy": "preserve",
+  "notes": [
+    "Arrival rate is requests/second, NOT total number of simulation replications.",
+    "Demand is steady-state equivalent vCPU with utilization/headroom, not the number of sequential retries.",
+    "Memory represents resident peak per service, not per attempt; concurrency may require separate measurements.",
+    "MB used in network resource blocks is treated as decimal MB; message kB and Mbps are decimal.",
+    "Service-graph logical dependencies are not assumed data transfers unless explicitly labeled.",
+    "Network graph and original professor solver are kept byte-for-byte unchanged.",
+    "Mixed cost coefficients are called reference cost units; not validated monetary cost."
+  ]
+}
