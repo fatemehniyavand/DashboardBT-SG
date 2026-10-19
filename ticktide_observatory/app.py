@@ -15,7 +15,9 @@ from wall import prepare_wall, render_wall
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-st.set_page_config(page_title='tick wave · Research in Motion', page_icon='∿', layout='wide')
+OCEAN_EDITION=globals().get('TICK_WAVE_EDITION')=='ocean'
+st.set_page_config(page_title='tick wave · Ocean Edition' if OCEAN_EDITION else 'tick wave · Research in Motion', page_icon='🌊' if OCEAN_EDITION else '∿', layout='wide')
+st.session_state['_tick_wave_edition']='ocean' if OCEAN_EDITION else 'classic'
 STAGES = ['Behavior tree', 'Execution trace', 'Executed trees', 'Prolog → service graph', 'Resource model', 'Physical network', 'MILP placement', 'Routing & audit', 'Experiment atlas', 'Kafka & provenance']
 COLORS = ['#60e7c6', '#77a9ff', '#bd9cff', '#ffbc76', '#ff7e9f', '#96d7ff']
 st.markdown('''<style>
@@ -44,6 +46,11 @@ button[kind="primary"] p,button[kind="primary"] span{color:#072c27!important;fon
 .stProgress [role="progressbar"]>div{background:linear-gradient(90deg,#83b7ff,#6effcb)!important}
 @keyframes tide{50%{transform:translateX(-25px) scaleX(1.15);opacity:.5}}
 </style>''', unsafe_allow_html=True)
+
+if OCEAN_EDITION:
+    from ocean_theme import apply_ocean_shell, ocean_header, ocean_sidebar, PALETTE
+    apply_ocean_shell()
+    COLORS=PALETTE
 
 @st.cache_data(show_spinner=False)
 def read_json(path):
@@ -114,7 +121,9 @@ def launch_wall(ids, current):
 folders=sorted([p for p in (ROOT/'TickTide/outputs').iterdir() if p.is_dir() and (p/'execution_service_graphs.jsonl').exists()],key=lambda p:p.name)
 preferred=[p for p in folders if p.name.startswith('n1000_seed')]
 if not folders:st.error('No recorded execution_service_graphs.jsonl found. Run the project experiment first.');st.stop()
-st.markdown('#### Choose your scenario → then Run')
+if OCEAN_EDITION:
+    ocean_header()
+st.markdown('#### Choose your current → then Run' if OCEAN_EDITION else '#### Choose your scenario → then Run')
 scenario=st.radio('Placement scenario',['baseline','ingress_only','latency_only','latency_path','capacity_stress','combined'],index=5,horizontal=True,format_func=lambda x:x.replace('_',' ').title(),key='scenario_choice')
 scenario_descriptions={
     'baseline':'Unrestricted cost optimization · no ingress pin or added delay bound.',
@@ -125,8 +134,11 @@ scenario_descriptions={
     'combined':'Core limited to 600 blocks · 5× request rate · F1 on Edge 1 · 4 ms dependency limit.'}
 st.caption(scenario_descriptions[scenario])
 with st.sidebar:
-    st.markdown('## ∿ tick wave')
-    st.caption('RESEARCH, IN MOTION')
+    if OCEAN_EDITION:
+        ocean_sidebar()
+    else:
+        st.markdown('## ∿ tick wave')
+        st.caption('RESEARCH, IN MOTION')
     seed=st.selectbox('Research seed',[42,123,2026])
     target=f'n1000_seed{seed}'
     folder=st.selectbox('Recorded experiment',folders,index=next((i for i,p in enumerate(folders) if p.name==target),0),format_func=lambda p:p.name)
@@ -169,7 +181,7 @@ trace_events=json.loads(trace.fillna('').to_json(orient='records'))
 if view=='Six-card live wall':
     left,right=st.columns([4,1])
     with left:
-        st.markdown('### ∿ tick wave · One request. Six connected views.')
+        st.markdown('### Follow the current · Six connected views.' if OCEAN_EDITION else '### ∿ tick wave · One request. Six connected views.')
         st.caption(f'RUN {run_id:04d} · STRATEGY {row.selected_strategy} · {scenario.replace("_"," ").upper()} · six independent loops · continuous motion')
     with right:
         st.button('▶ Run next execution' if st.session_state.get('wall_started') else '▶ Run selected path',key='run_wall',type='primary',width='stretch',on_click=launch_wall,args=(eligible.run_id.astype(int).tolist(),run_id))

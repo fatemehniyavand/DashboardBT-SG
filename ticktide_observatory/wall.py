@@ -26,4 +26,7 @@ def prepare_wall(root, sg, result, scenario):
 def render_wall(data, events, *, started=False, nonce=0, run_id=1, strategy='', scenario='', seed=42):
     payload=json.dumps(dict(data,events=events,started=started,nonce=nonce,run_id=run_id,strategy=strategy,scenario=scenario,seed=seed),ensure_ascii=False).replace('</',r'<\/')
     template=Path(__file__).with_name('wall.html').read_text()
+    if st.session_state.get('_tick_wave_edition')=='ocean':
+        from ocean_theme import ocean_markup
+        template=ocean_markup(template)
     components.html(template.replace('__DATA__',payload),height=900,scrolling=True)

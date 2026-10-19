@@ -87,6 +87,9 @@ document.getElementById('full').onclick=()=>{if(document.fullscreenElement)docum
 ui();if(D.auto&&!matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setTimeout(()=>document.getElementById('play').click(),800);
 </script></body></html>'''
     board_height=height-238
+    if st.session_state.get('_tick_wave_edition')=='ocean':
+        from ocean_theme import ocean_markup
+        template=ocean_markup(template,mode='scene')
     rendered=template.replace('__DATA__',payload).replace('__TITLE__',html.escape(title)).replace('__SUBTITLE__',html.escape(subtitle)).replace('__BOARD_HEIGHT__',str(board_height))
     components.html(rendered,height=height+8,scrolling=False)
 
