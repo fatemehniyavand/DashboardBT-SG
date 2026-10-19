@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+kafka_certs/
+*.pem
+*.key
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.research_data_ready
+TickTide/outputs/
+results_multiseed/
