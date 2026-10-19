@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1530 420" role="img" aria-labelledby="title desc">
+  <title id="title">tick wave</title><desc id="desc">Cyan behavior tree connected by a violet ocean wave, with a purple WAVE wordmark. Vector reconstruction of the supplied logo reference.</desc>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M210 62 135 158 72 282 M210 62 285 158 348 282" stroke="#2DBBEA" stroke-width="7"/>
+    <path d="M135 158 162 282 M285 158 258 282" stroke="#243043" stroke-width="6"/>
+    <path d="M72 282Q117 221 162 282" stroke="#2DBBEA" stroke-width="7"/>
+    <path d="M162 282Q210 347 258 282" stroke="#8488EF" stroke-width="7"/>
+    <path d="M258 282Q303 221 348 282" stroke="#BB80F5" stroke-width="7"/>
+    <path d="M72 292Q210 411 348 292" stroke="#A16BD5" stroke-width="5" stroke-dasharray="12 9"/>
+    <g stroke-width="5"><circle cx="210" cy="62" r="18" fill="#2DBBEA" stroke="#FFFFFF"/><circle cx="210" cy="62" r="8" fill="#FFFFFF" stroke="#FFFFFF"/>
+    <g fill="#050609" stroke="#2DBBEA"><circle cx="135" cy="158" r="13"/><circle cx="285" cy="158" r="13"/><circle cx="72" cy="282" r="15"/></g>
+    <g fill="#2DBBEA" stroke="none"><circle cx="135" cy="158" r="7"/><circle cx="285" cy="158" r="7"/><circle cx="72" cy="282" r="8"/></g>
+    <g stroke="#8488EF" fill="#050609"><circle cx="162" cy="282" r="15"/><circle cx="258" cy="282" r="15"/></g>
+    <g fill="#8488EF" stroke="none"><circle cx="162" cy="282" r="8"/><circle cx="258" cy="282" r="8"/></g>
+    <circle cx="348" cy="282" r="15" stroke="#BB80F5" fill="#050609"/><circle cx="348" cy="282" r="8" stroke="none" fill="#BB80F5"/></g>
+    <path d="M450 295H1435" stroke="#2DBBEA" stroke-width="4" opacity=".8"/>
+  </g>
+  <text x="810" y="215" text-anchor="middle" fill="#BB80F5" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="113" letter-spacing="-3">WAVE</text>
+</svg>
