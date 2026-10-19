@@ -21,6 +21,14 @@ The second visual edition uses the supplied cyan/violet logo reference, a scalab
 python -m streamlit run streamlit_app_v2.py
 ```
 
+## Living Ocean / Surf Edition · Latest
+
+For the high-motion version, choose **`streamlit_app_ocean.py`** as the Streamlit main file on branch **`main`**. This edition includes the animated cyan/violet logo, rolling layered ocean waves, foam and request light trails. All six panels loop independently; Visual sea controls Calm / Swell / Surf. The previous launch files remain available.
+
+```bash
+python -m streamlit run streamlit_app_ocean.py
+```
+
 ## Explore
 
 1. Choose a placement scenario above the dashboard.
