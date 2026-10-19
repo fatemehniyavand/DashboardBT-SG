@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1530 420" role="img" aria-labelledby="title desc" class="animated-wave-logo">
+  <title id="title">tick wave</title><desc id="desc">Cyan behavior tree connected by a violet ocean wave, with a purple WAVE wordmark. Vector reconstruction of the supplied logo reference.</desc>
+  <style>
+.animated-wave-logo{overflow:visible} .animated-wave-logo>g>path:first-child,.animated-wave-logo>g>path:nth-child(3){stroke-dasharray:21 9;animation:branchCurrent 2s linear infinite}
+.animated-wave-logo>g>path:nth-child(4),.animated-wave-logo>g>path:nth-child(5){stroke-dasharray:18 7;animation:branchCurrent 1.65s linear infinite reverse}
+.animated-wave-logo>g>path:nth-child(6){animation:underTow 3s ease-in-out infinite}
+.animated-wave-logo text{animation:wordGlow 3.8s ease-in-out infinite;paint-order:stroke;stroke:#bb80f5;stroke-width:.7px}
+.logo-ring{fill:none;stroke:#71e5ff;stroke-width:2;transform-box:fill-box;transform-origin:center;animation:ringWave 2.6s ease-out infinite}.logo-ring.violet{stroke:#d5a0ff;animation-delay:1.25s}.logo-spark{fill:#edfcff;filter:drop-shadow(0 0 7px #38d8ff);animation:nodeSpark 2s ease-in-out infinite}.logo-spark:nth-child(2n){animation-delay:-1s}
+@keyframes branchCurrent{to{stroke-dashoffset:-60}}@keyframes wordGlow{0%,100%{fill:#c387ff;filter:drop-shadow(0 0 3px #9f65e2)}50%{fill:#92eaff;filter:drop-shadow(0 0 14px #2dd6ff)}}@keyframes ringWave{0%{transform:scale(.72);opacity:.9}100%{transform:scale(2.7);opacity:0}}@keyframes nodeSpark{50%{opacity:.3;fill:#bc85ff}}@keyframes underTow{50%{stroke:#5adfff;opacity:.45}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style><g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M210 62 135 158 72 282 M210 62 285 158 348 282" stroke="#2DBBEA" stroke-width="7"/>
+    <path d="M135 158 162 282 M285 158 258 282" stroke="#243043" stroke-width="6"/>
+    <path d="M72 282Q117 221 162 282" stroke="#2DBBEA" stroke-width="7"/>
+    <path d="M162 282Q210 347 258 282" stroke="#8488EF" stroke-width="7"/>
+    <path d="M258 282Q303 221 348 282" stroke="#BB80F5" stroke-width="7"/>
+    <path d="M72 292Q210 411 348 292" stroke="#A16BD5" stroke-width="5" stroke-dasharray="12 9"/>
+    <g stroke-width="5"><circle cx="210" cy="62" r="18" fill="#2DBBEA" stroke="#FFFFFF"/><circle cx="210" cy="62" r="8" fill="#FFFFFF" stroke="#FFFFFF"/>
+    <g fill="#050609" stroke="#2DBBEA"><circle cx="135" cy="158" r="13"/><circle cx="285" cy="158" r="13"/><circle cx="72" cy="282" r="15"/></g>
+    <g fill="#2DBBEA" stroke="none"><circle cx="135" cy="158" r="7"/><circle cx="285" cy="158" r="7"/><circle cx="72" cy="282" r="8"/></g>
+    <g stroke="#8488EF" fill="#050609"><circle cx="162" cy="282" r="15"/><circle cx="258" cy="282" r="15"/></g>
+    <g fill="#8488EF" stroke="none"><circle cx="162" cy="282" r="8"/><circle cx="258" cy="282" r="8"/></g>
+    <circle cx="348" cy="282" r="15" stroke="#BB80F5" fill="#050609"/><circle cx="348" cy="282" r="8" stroke="none" fill="#BB80F5"/></g>
+    <path d="M450 295H1435" stroke="#2DBBEA" stroke-width="4" opacity=".8"/>
+  </g>
+  <text x="810" y="215" text-anchor="middle" fill="#BB80F5" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="113" letter-spacing="-3">WAVE</text>
+<g aria-hidden="true"><circle class="logo-ring" cx="210" cy="62" r="26"/><circle class="logo-ring violet" cx="348" cy="282" r="22"/><circle class="logo-ring" cx="72" cy="282" r="22" style="animation-delay:.7s"/><circle class="logo-spark" cx="135" cy="158" r="5"/><circle class="logo-spark" cx="285" cy="158" r="5"/></g></svg>
